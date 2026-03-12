@@ -4,6 +4,7 @@ This project implements a minimal API client for the Aster decentralized exchang
 The supported scope is intentionally narrow: trading operations, real-time market data streams, and local order book construction. All API-facing functionality should be designed for asynchronous use so the client can be integrated into latency-sensitive trading systems without forcing synchronous wrappers.
 
 Implementation decisions must distinguish between the different API families exposed by Aster (for example, versioned REST surfaces such as v1 and v3) and use the correct behavior for each one. Private API authentication and request signing must be implemented from primary-source documentation with strong attention to correctness, while keeping the signing path efficient and operationally lightweight. Integration tests against live endpoints are out of scope; the project should emphasize deterministic unit tests and protocol-level validation instead.
+During implementation, always consult primary sources such as the official Aster documentation before finalizing protocol behavior, authentication logic, request formats, or stream handling.
 
 ## Project Structure & Module Organization
 Organize the package around clear protocol boundaries so each concern can evolve independently. Keep REST transport, authentication/signing, WebSocket transport, message models, and local order book logic in separate modules. Prefer a thin public client layer that composes these building blocks rather than embedding protocol details in a single large class.
@@ -46,6 +47,7 @@ When adding tests:
 - Place them under `tests/` mirroring package paths.
 - Name files `test_<unit>.py` and test functions `test_<behavior>()`.
 - Run `uv run pytest` locally before handing off changes.
+- Once a feature implementation is complete, run `mypy` and confirm the new or updated code passes type checking before handing off changes.
 
 ## Commit & Pull Request Guidelines
 Write rich Git commit messages that explain the change clearly. Use a descriptive subject and add context in the body when the rationale, scope, or API impact is not obvious:
