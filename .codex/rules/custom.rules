@@ -1,0 +1,24 @@
+prefix_rule(pattern=["uv", "run", "pytest"], decision="allow")
+
+# Git commands allowed for agent workflow
+prefix_rule(pattern=["git", "status"], decision="allow")
+prefix_rule(pattern=["git", "diff"], decision="allow")
+prefix_rule(pattern=["git", "add"], decision="allow")
+prefix_rule(pattern=["git", "commit"], decision="allow")
+prefix_rule(pattern=["git", "log"], decision="allow")
+prefix_rule(pattern=["git", "rev-parse"], decision="allow")
+
+# Git commands denied to prevent branch/migration/history rewriting operations
+prefix_rule(pattern=["git", "switch"], decision="forbidden")
+prefix_rule(pattern=["git", "checkout"], decision="forbidden")
+prefix_rule(pattern=["git", "merge"], decision="forbidden")
+prefix_rule(pattern=["git", "rebase"], decision="forbidden")
+prefix_rule(pattern=["git", "cherry-pick"], decision="forbidden")
+prefix_rule(pattern=["git", "reset"], decision="forbidden")
+prefix_rule(pattern=["git", "stash"], decision="forbidden")
+prefix_rule(pattern=["git", "pull"], decision="forbidden")
+prefix_rule(pattern=["git", "fetch"], decision="forbidden")
+prefix_rule(pattern=["git", "branch"], decision="forbidden")
+prefix_rule(pattern=["git", "tag"], decision="forbidden")
+prefix_rule(pattern=["git", "worktree"], decision="forbidden")
+prefix_rule(pattern=["git", "push"], decision="forbidden")
