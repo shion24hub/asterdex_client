@@ -7,7 +7,11 @@ authors = [
     { name = "Shion Noguchi", email = "shion24stat@gmail.com" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "eth-account>=0.13.7",
+    "httpx>=0.28.1",
+    "websockets>=15.0.1",
+]
 
 [project.scripts]
 asterdex-client = "asterdex_client:main"
@@ -20,6 +24,8 @@ build-backend = "uv_build"
 dev = [
     "mypy>=1.18.2",
     "pre-commit>=4.5.1",
+    "pytest>=8.4.2",
+    "pytest-asyncio>=1.2.0",
 ]
 
 [tool.mypy]
@@ -32,3 +38,6 @@ warn_redundant_casts = true
 warn_return_any = true
 warn_unreachable = true
 warn_unused_ignores = true
+
+[tool.isort]
+profile = "black"
